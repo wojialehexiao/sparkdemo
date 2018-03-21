@@ -1,5 +1,7 @@
 package com.song.demo
 
+import java.util.UUID
+
 import scala.beans.BeanProperty
 
 /** *****************************************************************************
@@ -14,6 +16,9 @@ import scala.beans.BeanProperty
 object ScalaTest {
 
   def main(args: Array[String]): Unit = {
+
+    val uuid = UUID.randomUUID().toString
+    println(uuid)
 
     val a1 = new Aa
     a1.b(11)
