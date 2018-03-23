@@ -62,6 +62,6 @@ class Cc{
 List
   def main(args: Array[String]): Unit = {
 
-    println("dddddddddddddddddddd")
+    println(UUID.randomUUID())
   }
 }

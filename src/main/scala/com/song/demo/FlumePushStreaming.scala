@@ -20,14 +20,11 @@ object FlumePushStreaming {
     val sc = new SparkContext(conf)
     val ssc = new StreamingContext(sc,Seconds(5))
 
-    val flumeStream = FlumeUtils.createStream(ssc,"localhost",8888)
+    val flumeStream = FlumeUtils.createStream(ssc,"192.168.10.188",8888)
 
     val words = flumeStream.flatMap(x=>{
-      println("***************************************")
       new String(x.event.getBody.array()).split(" ")}).map((_,1))
     val results = words.reduceByKey(_+_)
-
-
     results.print()
 
     ssc.start()
