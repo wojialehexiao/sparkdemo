@@ -4,6 +4,7 @@ import java.sql.{Connection, DriverManager}
 
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd.JdbcRDD
+import org.apache.spark.storage.StorageLevel
 
 /** *****************************************************************************
   * Copyright (c) 2017 daixinlian.com
@@ -35,6 +36,7 @@ object JdbcRDDDemo {
       rs.getDate(3))
     })
 
+    rdd.persist(StorageLevel.DISK_ONLY)
     println(rdd.collect().mkString("\n"))
   }
 
